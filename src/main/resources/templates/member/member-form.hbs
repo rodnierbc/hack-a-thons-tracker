@@ -1,0 +1,60 @@
+{{#partial "content"}}
+
+{{#if editApplicant}}
+<h1>Edit Member</h1>
+
+<form action="/member/{{editMember.id}}/update" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Name</label>
+            <input id="nameUpdate" name="nameUpdate" class="form-control input-sm" type="text" value="{{editmember.name}}">
+        </div>
+        <div class="col-md-6">
+            <label>Email</label>
+            <input id="emailUpdate" name="emailUpdate" class="form-control input-sm" type="text" value="{{editmember.email}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>Education</label>
+            <input id="educationUpdate" name="educationUpdate" class="form-control input-sm" type="text" value="{{editmember.education}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+    </div>
+</form>
+{{else}}
+<h1>Member Register</h1>
+
+<form action="/member/new" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Name</label>
+            <input id="name" name="name" class="form-control input-sm" type="text">
+        </div>
+        <div class="col-md-6">
+            <label>Email</label>
+            <input id="email" name="email" class="form-control input-sm" type="text">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>Education</label>
+            <input id="education" name="education" class="form-control input-sm" type="text">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+
+    </div>
+</form>
+{{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
