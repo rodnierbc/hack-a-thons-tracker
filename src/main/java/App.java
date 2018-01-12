@@ -75,9 +75,19 @@ public class App {
             String descriptionUpdate = request.queryParams("descriptionUpdate");
             int idTeam = Integer.parseInt(request.params("id"));
             Team editTeam = Team.findById(idTeam);
-            editTeam.update(nameUpdate, descriptionUpdate); //don’t forget me
+            editTeam.update(nameUpdate, descriptionUpdate);
             model.put("team", Team.findById(idTeam));
             return new ModelAndView(model, "team/team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/team/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idTeam= Integer.parseInt(request.params("id"));
+            Team deleteTeam = Team.findById(idTeam);
+            deleteTeam.delete();
+            ArrayList<Team> teams = Team.getTeams();
+            model.put("deleteTeam",deleteTeam );
+            model.put("teams", teams);
+            return new ModelAndView(model, "team/index.hbs");
         }, new HandlebarsTemplateEngine());
 
     }

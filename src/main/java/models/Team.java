@@ -77,4 +77,8 @@ public class Team {
         this.name = name;
         this.description = description;
     }
+
+    public void delete(){
+        teams.remove(this);
+    }
 }

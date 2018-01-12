@@ -42,5 +42,11 @@ public class TeamTest {
         assertEquals(true, team.getName().equals("Epicodus"));
         assertEquals(true, team.getDescription().equals("Team 1"));
     }
+    @Test
+    public void deleteTeam() {
+        Team team1 = new Team("Epicodus Androide 1", "Epicodus team 1");
+        team1.delete();
+        assertFalse(team1.getName() == null);
+    }
 
 }
