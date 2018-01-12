@@ -1,0 +1,42 @@
+{{#partial "content"}}
+
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/team/index">Teams</a></li>
+    <li role="presentation"><a href="/team/new">Create a new Team</a></li>
+</ul>
+
+{{#if deleteTeam}}
+<div class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> the team with name <strong>{{deleteTeam.name}}</strong> was deleted.
+</div>
+{{/if}}
+
+
+<h1>Teams</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#if teams}}
+    {{#each teams}}
+    <tr>
+        <th scope="row">1</th>
+        <td>{{name}}</td>
+        <td>{{description}}</td>
+        <td><a href="/team/view/{{id}}">view</a> <a href="/team/{{id}}/update">update</a> <a href="/team/{{id}}/delete">delete</a></td>
+    </tr>
+    {{/each}}
+    {{/if}}
+    </tbody>
+</table>
+{{/partial}}
+
+{{> layout.hbs}}
