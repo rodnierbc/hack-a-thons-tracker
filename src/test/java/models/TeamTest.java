@@ -28,4 +28,10 @@ public class TeamTest {
         assertTrue(team.getId() == team.getIdController()-1);
         assertTrue(team.getMembers().size() == 1);
     }
+    @Test
+    public void FindTeamByID_Applicant() {
+        Team team1 = new Team("Epicodus Androide 1", "Epicodus team 1");
+        Team team2 = new Team("Epicodus Androide 2", "Epicodus team 2");
+        assertEquals(true, Team.findById(0).getId() == Team.getTeams().get(0).getId());
+    }
 }

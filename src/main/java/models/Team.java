@@ -53,4 +53,14 @@ public class Team {
     public static void clearTeams(){
         teams.clear();
     }
+    public static Team findById(int id){
+        Team team= null;
+        for(int i = 0; i<teams.size();i++){
+            if(teams.get(i).getId() == id){
+                team = teams.get(i);
+                i = teams.size();
+            }
+        }
+        return team;
+    }
 }
