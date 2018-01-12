@@ -1,23 +1,23 @@
 {{#partial "content"}}
 
-{{#if editApplicant}}
+{{#if editMember}}
 <h1>Edit Member</h1>
 
 <form action="/member/{{editMember.id}}/update" method="post">
     <div class="row">
         <div class="col-md-6">
             <label>Name</label>
-            <input id="nameUpdate" name="nameUpdate" class="form-control input-sm" type="text" value="{{editmember.name}}">
+            <input id="nameUpdate" name="nameUpdate" class="form-control input-sm" type="text" value="{{editMember.name}}">
         </div>
         <div class="col-md-6">
             <label>Email</label>
-            <input id="emailUpdate" name="emailUpdate" class="form-control input-sm" type="text" value="{{editmember.email}}">
+            <input id="emailUpdate" name="emailUpdate" class="form-control input-sm" type="text" value="{{editMember.email}}">
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <label>Education</label>
-            <input id="educationUpdate" name="educationUpdate" class="form-control input-sm" type="text" value="{{editmember.education}}">
+            <input id="educationUpdate" name="educationUpdate" class="form-control input-sm" type="text" value="{{editMember.education}}">
         </div>
     </div>
     <div class="row">
