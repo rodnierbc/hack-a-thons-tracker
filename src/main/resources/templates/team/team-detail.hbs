@@ -1,0 +1,34 @@
+{{#partial "content"}}
+
+<p>Team details</p>
+
+<p>Name: {{ team.name }}</p>
+<p>Description:{{ team.description }}</p>
+<p>This team is integrated by:</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>email</th>
+        <th>education</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each team.members}}
+    <tr>
+        <th scope="row">1</th>
+        <td>{{name}}</td>
+        <td>{{email}}</td>
+        <td>{{education}}</td>
+        <td><a href="/member/view/{{id}}">view</a> <a href="/member/{{id}}/update">update</a> <a href="/member/{{id}}/delete">delete</a></td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+
+{{/partial}}
+
+{{> layout.hbs}}

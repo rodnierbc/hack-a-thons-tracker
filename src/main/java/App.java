@@ -55,5 +55,13 @@ public class App {
             model.put("teams", teams);
             return new ModelAndView(model, "team/index.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/team/view/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idTeam = Integer.parseInt(request.params("id"));
+            Team team = Team.findById(idTeam);
+            model.put("team", team);
+            return new ModelAndView(model, "team/team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
