@@ -29,9 +29,18 @@ public class TeamTest {
         assertTrue(team.getMembers().size() == 1);
     }
     @Test
-    public void FindTeamByID_Applicant() {
+    public void FindTeamByID_Team() {
         Team team1 = new Team("Epicodus Androide 1", "Epicodus team 1");
         Team team2 = new Team("Epicodus Androide 2", "Epicodus team 2");
         assertEquals(true, Team.findById(0).getId() == Team.getTeams().get(0).getId());
     }
+
+    @Test
+    public void updateTeam() {
+        Team team = new Team("Epicodus Androide 1", "Epicodus team 1");
+        team.update("Epicodus", "Team 1");
+        assertEquals(true, team.getName().equals("Epicodus"));
+        assertEquals(true, team.getDescription().equals("Team 1"));
+    }
+
 }
