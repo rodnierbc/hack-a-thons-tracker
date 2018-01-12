@@ -15,8 +15,10 @@ public class App {
 
         //----------INIT MEMBER-----------------------------------------
 
-        get("/member/new", (request, response) -> {
+        get("/member/:id/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            int idTeam = Integer.parseInt(request.params("id"));
+            model.put("idTeam",idTeam);
             return new ModelAndView(model, "member/member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -30,6 +32,9 @@ public class App {
             int idTeam = Integer.parseInt(request.params("idTeam"));
             Team team = Team.findById(idTeam);
             team.getMembers().add(member);
+            team.setNumberOfMembers(team.getMembers().size());
+            ArrayList<Team> teams = Team.getTeams();
+            model.put("teams", teams);
             return new ModelAndView(model, "team/index.hbs");
         }, new HandlebarsTemplateEngine());
 

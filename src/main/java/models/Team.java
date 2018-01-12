@@ -6,6 +6,7 @@ public class Team {
     private String name;
     private String description;
     private ArrayList<Member> members;
+    private int numberOfMembers;
     private int id;
     private static ArrayList<Team> teams = new ArrayList<Team>();
     private static int idController = 0;
@@ -14,6 +15,7 @@ public class Team {
         this.name = name;
         this.description = description;
         this.members = new ArrayList<Member>();
+        this.numberOfMembers = members.size();
         this.id = idController;
         teams.add(this);
         idController++;
@@ -35,6 +37,10 @@ public class Team {
         return members;
     }
 
+    public int getNumberOfMembers() {
+        return numberOfMembers;
+    }
+
     public static ArrayList<Team> getTeams() {
         return teams;
     }
@@ -45,6 +51,10 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setNumberOfMembers(int numberOfMembers) {
+        this.numberOfMembers = numberOfMembers;
     }
 
     public void setDescription(String description) {
