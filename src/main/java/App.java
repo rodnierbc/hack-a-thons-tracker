@@ -38,13 +38,42 @@ public class App {
             return new ModelAndView(model, "team/index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/team/:idTeam/member/:idMember/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idTeam = Integer.parseInt(request.params("idTeam"));
+            int idMember = Integer.parseInt(request.params("idMember"));
+            Team team = Team.findById(idTeam);
+            Member editMember = Member.findMember(team.getMembers(),idMember);
+            model.put("team", team);
+            model.put("editMember", editMember);
+            return new ModelAndView(model, "member/member-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("team/:idTeam/member/:idMember/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String nameUpdate = request.queryParams("nameUpdate");
+            String emailUpdate = request.queryParams("emailUpdate");
+            String educationUpdate = request.queryParams("educationUpdate");
+            int idTeam = Integer.parseInt(request.params("idTeam"));
+            int idMember = Integer.parseInt(request.params("id"));
+            Team team = Team.findById(idTeam);
+            Member editMember = Member.findMember(team.getMembers(),idMember);
+            editMember.update(nameUpdate, emailUpdate, educationUpdate);
+            model.put("member", editMember);
+            return new ModelAndView(model, "member/team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //------------INIT TEAM---------------------------------------------
 
         get("/team/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "team/team-form.hbs");
         }, new HandlebarsTemplateEngine());
-
+        get("/team", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Team> teams = Team.getTeams();
+            model.put("teams", teams);
+            return new ModelAndView(model, "team/index.hbs");
+        }, new HandlebarsTemplateEngine());
         //post: new team form
         post("/team/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();

@@ -47,4 +47,18 @@ public class Member {
     public static int getIdController(){
         return idController;
     }
+    public static Member findMember(ArrayList<Member> members, int idMember){
+        Member member = null;
+        for(Member memberAux: members){
+            if(memberAux.getId() == idMember){
+                member = memberAux;
+            }
+        }
+        return member;
+    }
+    public void update(String name, String email, String education){
+       this.education = education;
+       this.name = name;
+    }
+
 }
