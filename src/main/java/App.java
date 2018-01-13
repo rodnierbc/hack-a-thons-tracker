@@ -68,6 +68,7 @@ public class App {
             Team team = Team.findById(idTeam);
             Member deleteMember = Member.findMember(team.getMembers(),idMember);
             team.deleteMember(deleteMember);
+            team.setNumberOfMembers(team.getMembers().size());
             model.put("deleteMember", deleteMember);
             model.put("team", team);
             return new ModelAndView(model, "team/team-detail.hbs");
