@@ -1,5 +1,13 @@
 {{#partial "content"}}
 
+{{#if deleteMember}}
+<div class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> the member with name <strong>{{deleteTeam.name}}</strong> was deleted.
+</div>
+{{/if}}
+
+
 <p>Team details</p>
 
 <p>Name: {{ team.name }}</p>

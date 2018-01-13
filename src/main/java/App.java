@@ -48,18 +48,29 @@ public class App {
             model.put("editMember", editMember);
             return new ModelAndView(model, "member/member-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("team/:idTeam/member/:idMember/update", (request, response) -> {
+        post("/team/:idTeam/member/:idMember/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String nameUpdate = request.queryParams("nameUpdate");
             String emailUpdate = request.queryParams("emailUpdate");
             String educationUpdate = request.queryParams("educationUpdate");
             int idTeam = Integer.parseInt(request.params("idTeam"));
-            int idMember = Integer.parseInt(request.params("id"));
+            int idMember = Integer.parseInt(request.params("idMember"));
             Team team = Team.findById(idTeam);
             Member editMember = Member.findMember(team.getMembers(),idMember);
             editMember.update(nameUpdate, emailUpdate, educationUpdate);
             model.put("member", editMember);
-            return new ModelAndView(model, "member/team-detail.hbs");
+            return new ModelAndView(model, "member/member-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/team/:idTeam/member/:idMember/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idTeam = Integer.parseInt(request.params("idTeam"));
+            int idMember = Integer.parseInt(request.params("idMember"));
+            Team team = Team.findById(idTeam);
+            Member deleteMember = Member.findMember(team.getMembers(),idMember);
+            team.deleteMember(deleteMember);
+            model.put("deleteMember", deleteMember);
+            model.put("team", team);
+            return new ModelAndView(model, "team/team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         //------------INIT TEAM---------------------------------------------

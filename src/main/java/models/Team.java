@@ -81,4 +81,7 @@ public class Team {
     public void delete(){
         teams.remove(this);
     }
+    public void deleteMember(Member member){
+        this.members.remove(member);
+    }
 }
