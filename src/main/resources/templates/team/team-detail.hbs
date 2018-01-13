@@ -3,7 +3,7 @@
 {{#if deleteMember}}
 <div class="alert alert-success alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> the member with name <strong>{{deleteTeam.name}}</strong> was deleted.
+    <strong>Success!</strong> the member with name <strong>{{deleteMember.name}}</strong> was deleted.
 </div>
 {{/if}}
 
@@ -30,7 +30,7 @@
         <td>{{name}}</td>
         <td>{{email}}</td>
         <td>{{education}}</td>
-        <td><a href="/team/{{team.id}}/member/{{id}}/update">update</a> <a href="/member/{{id}}/delete">delete</a></td>
+        <td><a href="/team/{{team.id}}/member/{{id}}/update">update</a> <a href="/team/{{team.id}}/member/{{id}}/delete">delete</a></td>
     </tr>
     {{/each}}
     </tbody>

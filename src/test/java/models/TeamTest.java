@@ -48,5 +48,15 @@ public class TeamTest {
         team1.delete();
         assertFalse(team1.getName() == null);
     }
+    @Test
+    public void deleteMember() {
+        Team team = new Team("Epicodus Androide", "Epicodus team");
+        Member member = new Member("Rodnier Borrego", "rodnierbc@gmail.com", "Epicodus student");
+        team.getMembers().add(member);
+        assertTrue(team.getMembers().size() == 1);
+        team.deleteMember(member);
+        assertTrue(team.getMembers().size() == 0);
+    }
+
 
 }
