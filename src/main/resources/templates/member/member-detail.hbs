@@ -1,10 +1,25 @@
 {{#partial "content"}}
 
-<p>Member details</p>
-
-<p>Name: {{ member.name }}</p>
-<p>Email: {{ member.email }}</p>
-<p>Education: {{ member.education }}</p>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h3 class="panel-title">Member details</h3>
+            </div>
+            <div class="col-md-1">
+                <p class="control-links" data-placement="top" data-toggle="tooltip" title="Go Back"><a href="/team/view/{{idTeam}}" class="btn btn-default btn-xs" data-title="Go Back"><span class="glyphicon glyphicon-arrow-left"></span></a></p>
+            </div>
+            <div class="col-md-1">
+                <p class="control-links" data-placement="top" data-toggle="tooltip" title="Edit this member"><a href="/team/{{idTeam}}/member/{{member.id}}/update"class="btn btn-default btn-xs" data-title="Edit this member"><span class="glyphicon glyphicon-pencil"></span></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>Name: {{ member.name }}</p>
+        <p>Email: {{ member.email }}</p>
+        <p>Education: {{ member.education }}</p>
+    </div>
+</div>
 
 {{/partial}}
 

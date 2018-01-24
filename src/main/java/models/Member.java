@@ -59,6 +59,7 @@ public class Member {
     public void update(String name, String email, String education){
        this.education = education;
        this.name = name;
+        this.email = email;
     }
 
 }

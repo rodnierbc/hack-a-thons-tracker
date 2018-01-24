@@ -34,8 +34,9 @@ public class App {
             team.getMembers().add(member);
             team.setNumberOfMembers(team.getMembers().size());
             ArrayList<Team> teams = Team.getTeams();
+            model.put("team", team);
             model.put("teams", teams);
-            return new ModelAndView(model, "team/index.hbs");
+            return new ModelAndView(model, "team/team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/team/:idTeam/member/:idMember/update", (request, response) -> {
@@ -58,6 +59,7 @@ public class App {
             Team team = Team.findById(idTeam);
             Member editMember = Member.findMember(team.getMembers(),idMember);
             editMember.update(nameUpdate, emailUpdate, educationUpdate);
+            model.put("idTeam", idTeam);
             model.put("member", editMember);
             return new ModelAndView(model, "member/member-detail.hbs");
         }, new HandlebarsTemplateEngine());
@@ -80,7 +82,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "team/team-form.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/team", (request, response) -> {
+        get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Team> teams = Team.getTeams();
             model.put("teams", teams);

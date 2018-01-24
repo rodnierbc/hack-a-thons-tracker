@@ -6,37 +6,57 @@
     <strong>Success!</strong> the member with name <strong>{{deleteMember.name}}</strong> was deleted.
 </div>
 {{/if}}
-
-
-<p>Team details</p>
-
-<p>Name: {{ team.name }}</p>
-<p>Description:{{ team.description }}</p>
-<p>This team is integrated by:</p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>email</th>
-        <th>education</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#each team.members}}
-    <tr>
-        <th scope="row">1</th>
-        <td>{{name}}</td>
-        <td>{{email}}</td>
-        <td>{{education}}</td>
-        <td><a href="/team/{{team.id}}/member/{{id}}/update">update</a> <a href="/team/{{team.id}}/member/{{id}}/delete">delete</a></td>
-    </tr>
-    {{/each}}
-    </tbody>
-</table>
-
-
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h3 class="panel-title">Team details</h3>
+            </div>
+            <div class="col-md-1">
+                <p class="control-links" data-placement="top" data-toggle="tooltip" title="Admin Teams"><a href="/" class="btn btn-default btn-xs" data-title="Admin Teams"><span class="glyphicon glyphicon-home"></span></a></p>
+            </div>
+            <div class="col-md-1">
+                <p class="control-links" data-placement="top" data-toggle="tooltip" title="Add a new Member"><a href="/member/{{team.id}}/new"class="btn btn-default btn-xs" data-title="Add a new Member"><span class="glyphicon glyphicon-plus"></span></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>Name: {{ team.name }}</p>
+        <p>Description:{{ team.description }}</p>
+        <h3 class="panel-title">This team is integrated by:</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>education</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each team.members}}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{education}}</td>
+                <td>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p data-placement="top" data-toggle="tooltip" title="Edit"><a href="/team/{{team.id}}/member/{{id}}/update" class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></a></p>
+                        </div>
+                        <div class="col-md-2">
+                            <p data-placement="top" data-toggle="tooltip" title="Delete"><a href="/team/{{team.id}}/member/{{id}}/delete" class="btn btn-danger btn-xs" data-title="Delete"><span class="glyphicon glyphicon-trash"></span></a></p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
 {{/partial}}
 
 {{> layout.hbs}}
